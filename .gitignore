@@ -6,8 +6,7 @@ Icon?
 *.cache
 *.old
 *.log
-*.pem
-*.zip
+*.lock
 *~
 
 # Development files
@@ -16,8 +15,7 @@ Icon?
 
 # Dependency folders
 # --------------------------
-/vendor/
-node_modules/
+vendor/
 
 # IDE Project Configurations
 # --------------------------
@@ -29,6 +27,3 @@ node_modules/
 # But Keep these
 # --------------------------
 !.gitkeep
-
-
-.sass-cache
