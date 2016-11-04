@@ -1,0 +1,14 @@
+{
+	"name": "feryardiant/wp-cli-salts-generator",
+	"description": "Generate salts keys for your WordPress installation",
+	"type": "wp-cli-package",
+	"homepage": "https://github.com/feryardiant/wp-cli-salts-generator",
+	"license": "MIT",
+	"require": {
+		"php": ">=5.4",
+        "roots/wp-password-bcrypt": "^1.0"
+	},
+	"autoload": {
+		"files": [ "function.php" ]
+	}
+}

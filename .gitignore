@@ -1,0 +1,34 @@
+# Generic
+# --------------------------
+Desktop.ini
+Icon?
+.directory
+*.cache
+*.old
+*.log
+*.pem
+*.zip
+*~
+
+# Development files
+# --------------------------
+.env
+
+# Dependency folders
+# --------------------------
+/vendor/
+node_modules/
+
+# IDE Project Configurations
+# --------------------------
+.idea
+.settings
+.project
+*.sublime-*
+
+# But Keep these
+# --------------------------
+!.gitkeep
+
+
+.sass-cache
