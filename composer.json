@@ -9,6 +9,7 @@
         "roots/wp-password-bcrypt": "^1.0"
 	},
 	"autoload": {
-		"files": [ "function.php" ]
-	}
+		"files": [ "command.php" ]
+	},
+	"minimum-stability": "dev"
 }

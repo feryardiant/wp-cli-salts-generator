@@ -14,7 +14,7 @@ use WP_CLI\Utils;
  * : Render output in a particular format. -– default: table options: - table - csv - ids - json - yaml -–.
  */
 WP_CLI::add_command('salts-gen', function ($args, $assoc_args) {
-	$salts = [];
+	$salts = $items = [];
 	$definitions = [
 		'AUTH_KEY',
 		'SECURE_AUTH_KEY',
@@ -28,7 +28,6 @@ WP_CLI::add_command('salts-gen', function ($args, $assoc_args) {
 
 	if (Utils\get_flag_value($assoc_args, 'wp-api')) {
 		$api_response = Utils\http_request('get', 'https://api.wordpress.org/secret-key/1.1/salt/');
-		$salts_response = [];
 
 		if (20 != substr($api_response->status_code, 0, 2)) {
 			WP_CLI::error(
@@ -37,12 +36,10 @@ WP_CLI::add_command('salts-gen', function ($args, $assoc_args) {
 			);
 		} else {
 			$salts_response = explode("\n", $api_response->body);
-		}
-	}
 
-	if ($salts_response) {
-		foreach ($definitions as $key) {
-			$salts[$key] = substr(array_shift($salts_response), 28, 64);
+			foreach ($definitions as $key) {
+				$salts[$key] = substr(array_shift($salts_response), 28, 64);
+			}
 		}
 	} else {
 		foreach ($definitions as $key) {
@@ -50,8 +47,12 @@ WP_CLI::add_command('salts-gen', function ($args, $assoc_args) {
 		}
 	}
 
+	if (!$salts) {
+		WP_CLI::error('Failed to generate salts keys.');
+		return;
+	}
+
 	$format = Utils\get_flag_value($assoc_args, 'format') ?: 'table';
-	$items = [];
 
 	foreach ($salts as $key => $val) {
 		$items[] = [
