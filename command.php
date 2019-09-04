@@ -31,7 +31,7 @@ WP_CLI::add_command('salts-gen', function ($args, $assoc_args) {
 
 		if (20 != substr($api_response->status_code, 0, 2)) {
 			WP_CLI::error(
-				"Couldn't generate salts keys form API (HTTP code {$api_response->status_code}).\n"
+				"Couldn't generate salts keys form API (HTTP code {$api_response->status_code}).\n",
 				"Fallback to generate localy."
 			);
 		} else {
