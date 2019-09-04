@@ -4,9 +4,19 @@
 	"type": "wp-cli-package",
 	"homepage": "https://github.com/feryardiant/wp-cli-salts-generator",
 	"license": "MIT",
+	"authors": [
+		{
+			"name": "Fery Wardiyanto",
+			"email": "ferywardiyanto@gmail.com",
+			"homepage": "https://github.com/feryardiant"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/feryardiant/wp-cli-salts-generator/issues"
+	},
 	"require": {
 		"php": ">=5.4",
-        "roots/wp-password-bcrypt": "^1.0"
+		"roots/wp-password-bcrypt": "^1.0"
 	},
 	"autoload": {
 		"files": [ "command.php" ]
